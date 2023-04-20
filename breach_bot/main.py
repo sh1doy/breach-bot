@@ -8,7 +8,8 @@ import discord
 from breach_bot.aa import get_aa
 
 from breach_bot.config import read_config_from_env
-from breach_bot.constants import AA_KEY, ULT_KEY
+from breach_bot.constants import AA_KEY, MAP_GATCHA_KEY, ULT_KEY
+from breach_bot.gatcha import gatcha_map
 from breach_bot.ult import ult
 
 logger = logging.getLogger(__name__)
@@ -37,6 +38,9 @@ async def on_message(message: discord.Message):
 
     if message.content.startswith(AA_KEY):
         await get_aa(message)
+
+    if message.content.startswith(MAP_GATCHA_KEY):
+        await gatcha_map(message)
 
 
 client.run(config.token)
