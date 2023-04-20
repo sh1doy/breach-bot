@@ -24,3 +24,4 @@ ULT_NAME = "ローリングサンダー"
 AA_KEY = "aagen"
 
 MAP_GATCHA_KEY = "!map"
+AGENT_GATCHA_KEY = "!agent"
