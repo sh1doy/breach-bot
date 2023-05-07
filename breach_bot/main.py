@@ -34,7 +34,7 @@ async def on_message(message: discord.Message):
         return
 
     if message.content == ULT_KEY:
-        await ult(message)
+        await ult(client, message)
 
     if message.content.startswith(AA_KEY):
         await get_aa(message)

@@ -16,7 +16,7 @@ logger.setLevel(logging.INFO)
 logger.addHandler(sh)
 
 
-async def ult(message: discord.Message):
+async def ult(client: discord.Client, message: discord.Message):
 
     logger.info(f"ULT called by {message.author}")
 
@@ -39,9 +39,9 @@ async def ult(message: discord.Message):
     await message.channel.send(text)
 
     # Scream
-    vc = message.guild.voice_client
-    if vc is not None:
-        vc.disconnect()
+    voice_client = discord.utils.get(client.voice_clients, guild=message.guild)
+    if voice_client:
+        await voice_client.disconnect()
     logger.info(f"Connecting: {message.author.voice.channel}")
     author_vcc = await discord.VoiceChannel.connect(message.author.voice.channel)
     logger.info(f"Screaming: {voice_file}")
