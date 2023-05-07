@@ -39,14 +39,21 @@ async def ult(message: discord.Message):
     await message.channel.send(text)
 
     # Scream
+    vc = message.guild.voice_client
+    if vc is not None:
+        vc.disconnect()
+    logger.info(f"Connecting: {message.author.voice.channel}")
     author_vcc = await discord.VoiceChannel.connect(message.author.voice.channel)
+    logger.info(f"Screaming: {voice_file}")
     author_vcc.play(discord.FFmpegPCMAudio(voice_file))
+    logger.info(f"Screamed")
     while author_vcc.is_playing():
         await sleep(WAIT_TIME)
 
     # Channel creation
     vcs: list[discord.VoiceChannel] = []
     for n in range(ULT_N_STEPS):
+        logger.debug(f"Rolling thinder: {n}")
         vc_name = f"({ULT_NAME} {n + 1})"
         try:
             vcs.append(
