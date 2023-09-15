@@ -32,11 +32,11 @@ MAPS = [
     Map(name="Haven", is_regular=True),
     Map(name="Split", is_regular=True),
     Map(name="Ascent", is_regular=True),
-    Map(name="Fracture", is_regular=True),
-    Map(name="Pearl", is_regular=True),
+    Map(name="Fracture", is_regular=False),
+    Map(name="Pearl", is_regular=False),
     Map(name="Lotus", is_regular=True),
     Map(name="Icebox", is_regular=False),
-    Map(name="Breeze", is_regular=False),
+    Map(name="Breeze", is_regular=True),
 ]
 
 AGENTS = [
